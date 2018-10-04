@@ -36,10 +36,10 @@ class EventProcessor:
         self._measured = False
         self.done = False
         self._events = []
-        self._events1 = []
-        self._events2 = []
-        self._events3 = []
-        self._events4 = []
+        self._eventsTL = []
+        self._eventsTR = []
+        self._eventsBL = []
+        self._eventsBR = []
 
     def mass(self, event):
         if event.totalWeight > 30:

@@ -34,7 +34,7 @@ BLUETOOTH_NAME = "Nintendo RVL-WBC-01"
 class EventProcessor:
     def __init__(self):
         self._measured = False
-        self.done = False
+#         self.done = False
         self._events = []
         self._eventsTL = []
         self._eventsTR = []
@@ -50,9 +50,9 @@ class EventProcessor:
             self._eventsBR.append(event.bottomRight)
             if not self._measured:
                 print "Starting measurement."
-                self._measured = True
-        elif self._measured:
-            self.done = True
+#                 self._measured = True
+#         elif self._measured:
+#             self.done = True
 
     @property
     def weight(self):
@@ -155,7 +155,7 @@ class Wiiboard:
     def receive(self):
         #try:
         #   self.receivesocket.settimeout(0.1)       #not for windows?
-        while self.status == "Connected" and not self.processor.done:
+        while self.status == "Connected":
             data = self.receivesocket.recv(25)
             intype = int(data.encode("hex")[2:4])
             if intype == INPUT_STATUS:
@@ -173,8 +173,8 @@ class Wiiboard:
             else:
                 print "ACK to data write received"
 
-        self.status = "Disconnected"
-        self.disconnect()
+#         self.status = "Disconnected"
+#         self.disconnect()
 
     def disconnect(self):
         if self.status == "Connected":

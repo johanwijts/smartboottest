@@ -48,6 +48,8 @@ class EventProcessor:
             self._eventsTR.append(event.topRight)
             self._eventsBL.append(event.bottomLeft)
             self._eventsBR.append(event.bottomRight)
+            
+        print "Get on boye"
 
     @property
     def weight(self):
@@ -167,24 +169,6 @@ class Wiiboard:
                 self.processor.mass(self.createBoardEvent(data[2:12]))
             else:
                 print "ACK to data write received"
-
-        self.status = "Disconnected"
-        self.disconnect()
-
-    def disconnect(self):
-        if self.status == "Connected":
-            self.status = "Disconnecting"
-            while self.status == "Disconnecting":
-                self.wait(100)
-        try:
-            self.receivesocket.close()
-        except:
-            pass
-        try:
-            self.controlsocket.close()
-        except:
-            pass
-        print "WiiBoard disconnected"
 
     # Try to discover a Wiiboard
     def discover(self):
@@ -333,9 +317,6 @@ def main():
     print processor.weightTR
     print processor.weightBL
     print processor.weightBR
-
-#     # Disconnect the balance board after exiting.
-#     subprocess.check_output(["bluez-test-device", "disconnect", address])
 
 if __name__ == "__main__":
     main()

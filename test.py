@@ -42,17 +42,12 @@ class EventProcessor:
         self._eventsBR = []
 
     def mass(self, event):
-        if event.totalWeight > 30:
+        if event.totalWeight > 5:
             self._events.append(event.totalWeight)
             self._eventsTL.append(event.topLeft)
             self._eventsTR.append(event.topRight)
             self._eventsBL.append(event.bottomLeft)
             self._eventsBR.append(event.bottomRight)
-            if not self._measured:
-                print "Starting measurement."
-#                 self._measured = True
-#         elif self._measured:
-#             self.done = True
 
     @property
     def weight(self):

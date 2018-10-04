@@ -49,7 +49,7 @@ class EventProcessor:
             self._eventsBL.append(event.bottomLeft)
             self._eventsBR.append(event.bottomRight)
             
-         print "Measuring"
+        print "Measuring"
 
     @property
     def weight(self):

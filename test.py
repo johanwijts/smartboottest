@@ -168,8 +168,8 @@ class Wiiboard:
             else:
                 print "ACK to data write received"
 
-#         self.status = "Disconnected"
-#         self.disconnect()
+        self.status = "Disconnected"
+        self.disconnect()
 
     def disconnect(self):
         if self.status == "Connected":

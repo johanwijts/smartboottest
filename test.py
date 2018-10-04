@@ -42,7 +42,7 @@ class EventProcessor:
         self._eventsBR = []
 
     def mass(self, event):
-        if event.totalWeight > 20:
+        if event.totalWeight > 50:
             self._events.append(event.totalWeight)
             self._eventsTL.append(event.topLeft)
             self._eventsTR.append(event.topRight)

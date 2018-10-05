@@ -153,7 +153,7 @@ class Wiiboard:
         #   self.receivesocket.settimeout(0.1)       #not for windows?
         while self.status == "Connected":
             data = self.receivesocket.recv(25)
-            intype = int(data[2:4])
+            intype = int(data)
             if intype == INPUT_STATUS:
                 # TODO: Status input received. It just tells us battery life really
                 self.setReportingType()

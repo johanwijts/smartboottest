@@ -59,15 +59,15 @@ class EventProcessor:
 #             stdout.write("\r%d" % event.topLeft)
 #             stdout.write("\r%d" % event.topRight)
 #             stdout.write("\r%d" % event.bottomLeft)
-            def tl_label(label):
-            def tr_label(label):  
-            def bl_label(label):
-            def br_label(label):
+            tl = tk.Label(root, text=event.topLeft)
+            tr = tk.Label(root, text=event.topRight)
+            bl = tk.Label(root, text=event.bottomLeft)
+            br = tk.Label(root, text=event.bottomRight)
                 def update()
-                    label.config(text=str(event.topLeft))
-                    label.config(text=str(event.topRight))
-                    label.config(text=str(event.bottomLeft))
-                    label.config(text=str(event.bottomRight))
+                    tl.config(text=str(event.topLeft))
+                    tr.config(text=str(event.topRight))
+                    bl.config(text=str(event.bottomLeft))
+                    br.config(text=str(event.bottomRight))
                     sleep(1)
                 update()
 
@@ -75,10 +75,6 @@ class EventProcessor:
             root.title("Pressure Detector")
             label = tk.Label(root, fg="green")
             label.pack()
-            tl_label(label)
-            tr_label(label)
-            bl_label(label)
-            br_label(label)
             root.mainloop()
                     
 #             stdout.write("\r%d" % event.bottomRight)

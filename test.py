@@ -168,23 +168,23 @@ class Wiiboard:
             else:
                 print "ACK to data write received"
 
-        self.status = "Disconnected"
-        self.disconnect()
+#         self.status = "Disconnected"
+#         self.disconnect()
 
-    def disconnect(self):
-        if self.status == "Connected":
-            self.status = "Disconnecting"
-            while self.status == "Disconnecting":
-                self.wait(100)
-        try:
-            self.receivesocket.close()
-        except:
-            pass
-        try:
-            self.controlsocket.close()
-        except:
-            pass
-        print "WiiBoard disconnected"
+#     def disconnect(self):
+#         if self.status == "Connected":
+#             self.status = "Disconnecting"
+#             while self.status == "Disconnecting":
+#                 self.wait(100)
+#         try:
+#             self.receivesocket.close()
+#         except:
+#             pass
+#         try:
+#             self.controlsocket.close()
+#         except:
+#             pass
+#         print "WiiBoard disconnected"
 
     # Try to discover a Wiiboard
     def discover(self):
@@ -330,8 +330,8 @@ def main():
 
     print processor.weight
 
-    # Disconnect the balance board after exiting.
-    subprocess.check_output(["bluez-test-device", "disconnect", address])
+#     # Disconnect the balance board after exiting.
+#     subprocess.check_output(["bluez-test-device", "disconnect", address])
 
 if __name__ == "__main__":
     main()

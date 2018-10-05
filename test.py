@@ -60,6 +60,20 @@ class EventProcessor:
 #             stdout.write("\r%d" % event.topRight)
 #             stdout.write("\r%d" % event.bottomLeft)
 
+            def tl_label(label):
+                label.config(text=str(event.topLeft))
+            
+            def tl_label(label):
+                label.config(text=str(event.topRight))
+                
+            def tl_label(label):
+                label.config(text=str(event.bottomLeft))
+                
+            def tl_label(label):
+                label.config(text=str(event.bottomRight))
+                
+            sleep(1)
+
             root = tk.Tk()
             root.title("Pressure Detector")
             root.mainloop()

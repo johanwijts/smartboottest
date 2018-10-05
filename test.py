@@ -53,9 +53,9 @@ class EventProcessor:
 #             print(event.topLeft, end=" ")
 #             time.sleep(millis / 1000.0)
             
-            stdout.write("\r%d" % event.topLeft)
+            stdout.write("\r%d" event.topLeft)
             stdout.flush()
-            sleep(1)
+#             sleep(1)
 
     @property
     def weight(self):

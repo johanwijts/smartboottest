@@ -48,8 +48,12 @@ class EventProcessor:
             self._eventsTR.append(event.topRight)
             self._eventsBL.append(event.bottomLeft)
             self._eventsBR.append(event.bottomRight)
-            print(event.topLeft, end=" ", flush=True)
-            time.sleep(millis / 1000.0)
+#             print(event.topLeft, end=" ")
+#             time.sleep(millis / 1000.0)
+            
+            stdout.write("\r%d" % event.topLeft)
+            stdout.flush()
+            sleep(1)
 
     @property
     def weight(self):

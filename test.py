@@ -46,17 +46,20 @@ class EventProcessor:
     def mass(self, event):
         if event.totalWeight > 50:
             self._events.append(event.totalWeight)
-            self._eventsTL.append(event.topLeft)
-            self._eventsTR.append(event.topRight)
-            self._eventsBL.append(event.bottomLeft)
-            self._eventsBR.append(event.bottomRight)
+            self._eventsT.append(event.topLeft)
+            self._eventsT.append(event.topRight)
+            self._eventsT.append(event.bottomLeft)
+            self._eventsT.append(event.bottomRight)
 #             print(event.topLeft, end=" ")
 #             time.sleep(millis / 1000.0)
             
-            stdout.write("\r%d" % event.topLeft)
-            stdout.write("\r%d" % event.topRight)
-            stdout.write("\r%d" % event.bottomLeft)
-            stdout.write("\r%d" % event.bottomLeft)
+#             stdout.write("\r%d" % event.topLeft)
+#             stdout.write("\r%d" % event.topRight)
+#             stdout.write("\r%d" % event.bottomLeft)
+#             stdout.write("\r%d" % event.bottomLeft)
+#             stdout.flush()
+            
+            sys.stdout.write("\r%d" % "{}-{}-{}-{}".format(*self._eventsT))
             stdout.flush()
 #             sleep(1)
 

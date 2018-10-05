@@ -63,6 +63,8 @@ class EventProcessor:
             
             sys.stdout.write("\r%s" % "{}-{}-{}-{}".format(*self._eventsT))
             stdout.flush()
+            time.sleep(millis / 1000.0)
+            print("Me sleepy")
 #             sleep(1)
 
     @property

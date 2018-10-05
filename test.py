@@ -49,6 +49,7 @@ class EventProcessor:
             self._eventsBL.append(event.bottomLeft)
             self._eventsBR.append(event.bottomRight)
             print(event.topLeft, end=" ", flush=True)
+            time.sleep(millis / 1000.0)
 
     @property
     def weight(self):

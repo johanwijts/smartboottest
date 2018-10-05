@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import Tkinter as tk
 from __future__ import print_function
 from sys import stdout
 from time import sleep
@@ -58,9 +59,14 @@ class EventProcessor:
 #             stdout.write("\r%d" % event.topLeft)
 #             stdout.write("\r%d" % event.topRight)
 #             stdout.write("\r%d" % event.bottomLeft)
-            stdout.write("\r%d" % event.bottomRight)
-#             sleep(0.5)
-            stdout.flush()
+
+            root = tk.Tk()
+            root.title("Pressure Detector")
+            root.mainloop()
+                    
+#             stdout.write("\r%d" % event.bottomRight)
+# #             sleep(0.5)
+#             stdout.flush()
             
 #             sys.stdout.write("\r%s" % "{}-{}-{}-{}".format(*self._eventsT))
 #             stdout.flush()

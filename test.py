@@ -84,7 +84,6 @@ class EventProcessor:
             return 0
         histogram = collections.Counter(round(num, 1) for num in self._eventsBR)
         return histogram.most_common(1)[0][0]
-    
 
 
 class BoardEvent:
@@ -112,9 +111,9 @@ class Wiiboard:
         self.LED = False
         self.address = None
         self.buttonDown = False
-        for i in range(3):
+        for i in xrange(3):
             self.calibration.append([])
-            for j in range(4):
+            for j in xrange(4):
                 self.calibration[i].append(10000)  # high dummy value so events with it don't register
 
         self.status = "Disconnected"
@@ -132,26 +131,26 @@ class Wiiboard:
     # Connect to the Wiiboard at bluetooth address <address>
     def connect(self, address):
         if address is None:
-            print("Non existant address")
+            print "Non existant address"
             return
         self.receivesocket.connect((address, 0x13))
         self.controlsocket.connect((address, 0x11))
         if self.receivesocket and self.controlsocket:
-            print("Connected to Wiiboard at address " + address)
+            print "Connected to Wiiboard at address " + address
             self.status = "Connected"
             self.address = address
             self.calibrate()
             useExt = ["00", COMMAND_REGISTER, "04", "A4", "00", "40", "00"]
             self.send(useExt)
             self.setReportingType()
-            print("Wiiboard connected")
+            print "Wiiboard connected"
         else:
-            print("Could not connect to Wiiboard at address " + address)
+            print "Could not connect to Wiiboard at address " + address
 
     def receive(self):
         #try:
         #   self.receivesocket.settimeout(0.1)       #not for windows?
-        while self.status == "Connected":
+        while self.status == "Connected" and not self.processor.done:
             data = self.receivesocket.recv(25)
             intype = int(data.encode("hex")[2:4])
             if intype == INPUT_STATUS:
@@ -168,6 +167,24 @@ class Wiiboard:
                 self.processor.mass(self.createBoardEvent(data[2:12]))
             else:
                 print "ACK to data write received"
+
+        self.status = "Disconnected"
+        self.disconnect()
+
+    def disconnect(self):
+        if self.status == "Connected":
+            self.status = "Disconnecting"
+            while self.status == "Disconnecting":
+                self.wait(100)
+        try:
+            self.receivesocket.close()
+        except:
+            pass
+        try:
+            self.controlsocket.close()
+        except:
+            pass
+        print "WiiBoard disconnected"
 
     # Try to discover a Wiiboard
     def discover(self):
@@ -255,7 +272,7 @@ class Wiiboard:
         senddata = ""
         for byte in data:
             byte = str(byte)
-            senddata += byte
+            senddata += byte.decode("hex")
 
         self.controlsocket.send(senddata)
 
@@ -289,7 +306,7 @@ def main():
 
     board = Wiiboard(processor)
     if len(sys.argv) == 1:
-        print("Discovering board...")
+        print "Discovering board..."
         address = board.discover()
     else:
         address = sys.argv[1]
@@ -302,7 +319,7 @@ def main():
     except:
         pass
 
-    print("Trying to connect...")
+    print "Trying to connect..."
     board.connect(address)  # The wii board must be in sync mode at this time
     board.wait(200)
     # Flash the LED so we know we can step on.
@@ -311,11 +328,10 @@ def main():
     board.setLight(True)
     board.receive()
 
-    print(processor.weight)
-    print(processor.weightTL)
-    print(processor.weightTR)
-    print(processor.weightBL)
-    print(processor.weightBR)
+    print processor.weight
+
+    # Disconnect the balance board after exiting.
+    subprocess.check_output(["bluez-test-device", "disconnect", address])
 
 if __name__ == "__main__":
     main()

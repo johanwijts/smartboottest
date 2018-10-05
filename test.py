@@ -38,33 +38,33 @@ class EventProcessor:
         self._measured = False
 #         self.done = False
         self._events = []
-#     remove if not working 
-        self._eventsT = []
+# #     remove if not working 
+#         self._eventsT = []
         self._eventsTL = []
         self._eventsTR = []
         self._eventsBL = []
         self._eventsBR = []
 
     def mass(self, event):
-        if event.totalWeight > 50:
+        if event.totalWeight > 20:
             self._events.append(event.totalWeight)
-            self._eventsT.append(event.topLeft)
-            self._eventsT.append(event.topRight)
-            self._eventsT.append(event.bottomLeft)
-            self._eventsT.append(event.bottomRight)
+            self._eventsTL.append(event.topLeft)
+            self._eventsTR.append(event.topRight)
+            self._eventsBL.append(event.bottomLeft)
+            self._eventsBR.append(event.bottomRight)
 #             print(event.topLeft, end=" ")
 #             time.sleep(millis / 1000.0)
             
-#             stdout.write("\r%d" % event.topLeft)
-#             stdout.write("\r%d" % event.topRight)
-#             stdout.write("\r%d" % event.bottomLeft)
-#             stdout.write("\r%d" % event.bottomLeft)
-#             stdout.flush()
-            
-            sys.stdout.write("\r%s" % "{}-{}-{}-{}".format(*self._eventsT))
+            stdout.write(event.topLeft)
+            stdout.write(event.topRight)
+            stdout.write(event.bottomLeft)
+            stdout.write("\r%d" % event.bottomLeft)
             stdout.flush()
-            sleep(1)
-            print("Me sleepy")
+            
+#             sys.stdout.write("\r%s" % "{}-{}-{}-{}".format(*self._eventsT))
+#             stdout.flush()
+#             sleep(1)
+#             print("Me sleepy")
 
     @property
     def weight(self):

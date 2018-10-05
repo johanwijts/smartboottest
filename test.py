@@ -150,7 +150,7 @@ class Wiiboard:
     def receive(self):
         #try:
         #   self.receivesocket.settimeout(0.1)       #not for windows?
-        while self.status == "Connected" and not self.processor.done:
+        while self.status == "Connected":
             data = self.receivesocket.recv(25)
             intype = int(data.encode("hex")[2:4])
             if intype == INPUT_STATUS:

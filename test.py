@@ -54,6 +54,9 @@ class EventProcessor:
 #             time.sleep(millis / 1000.0)
             
             stdout.write("\r%d" % event.topLeft)
+            stdout.write("\r%d" % event.topRight)
+            stdout.write("\r%d" % event.bottomLeft)
+            stdout.write("\r%d" % event.bottomLeft)
             stdout.flush()
 #             sleep(1)
 

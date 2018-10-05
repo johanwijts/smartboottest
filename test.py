@@ -49,6 +49,7 @@ class EventProcessor:
             self._eventsBL.append(event.bottomLeft)
             self._eventsBR.append(event.bottomRight)
             print(event.topLeft, end=" ")
+            sys.stdout.flush()
 
     @property
     def weight(self):

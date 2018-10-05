@@ -59,7 +59,7 @@ class EventProcessor:
             stdout.write("\r%d" % event.topRight)
             stdout.write("\r%d" % event.bottomLeft)
             stdout.write("\r%d" % event.bottomLeft)
-            sleep(0.5)
+#             sleep(0.5)
             stdout.flush()
             
 #             sys.stdout.write("\r%s" % "{}-{}-{}-{}".format(*self._eventsT))

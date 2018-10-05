@@ -38,6 +38,8 @@ class EventProcessor:
         self._measured = False
 #         self.done = False
         self._events = []
+#     remove if not working 
+        self._eventsT = []
         self._eventsTL = []
         self._eventsTR = []
         self._eventsBL = []

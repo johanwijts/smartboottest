@@ -151,16 +151,15 @@ class Wiiboard:
     def receive(self):
         #try:
         #   self.receivesocket.settimeout(0.1)       #not for windows?
-        while self.status == "Connected":
+        while self.status == "Connected" and not self.processor.done:
             data = self.receivesocket.recv(25)
-            intype = data[2:4]
-            print(intype)
+            intype = int(data.encode("hex")[2:4])
             if intype == INPUT_STATUS:
                 # TODO: Status input received. It just tells us battery life really
                 self.setReportingType()
             elif intype == INPUT_READ_DATA:
                 if self.calibrationRequested:
-                    packetLength = (int(str(data[4]), 16) / 16 + 1)
+                    packetLength = (int(str(data[4]).encode("hex"), 16) / 16 + 1)
                     self.parseCalibrationResponse(data[7:(7 + packetLength)])
 
                     if packetLength < 16:
@@ -168,19 +167,19 @@ class Wiiboard:
             elif intype == EXTENSION_8BYTES:
                 self.processor.mass(self.createBoardEvent(data[2:12]))
             else:
-                print("ACK to data write received")
+                print "ACK to data write received"
 
     # Try to discover a Wiiboard
     def discover(self):
-        print("Press the red sync button on the board now")
+        print "Press the red sync button on the board now"
         address = None
         bluetoothdevices = bluetooth.discover_devices(duration=6, lookup_names=True)
         for bluetoothdevice in bluetoothdevices:
             if bluetoothdevice[1] == BLUETOOTH_NAME:
                 address = bluetoothdevice[0]
-                print("Found Wiiboard at address " + address)
+                print "Found Wiiboard at address " + address
         if address is None:
-            print("No Wiiboards discovered.")
+            print "No Wiiboards discovered."
         return address
 
     def createBoardEvent(self, bytes):
@@ -189,23 +188,23 @@ class Wiiboard:
         buttonPressed = False
         buttonReleased = False
 
-        state = (int(buttonBytes[0], 16) << 8) | int(buttonBytes[1], 16)
+        state = (int(buttonBytes[0].encode("hex"), 16) << 8) | int(buttonBytes[1].encode("hex"), 16)
         if state == BUTTON_DOWN_MASK:
             buttonPressed = True
             if not self.buttonDown:
-                print("Button pressed")
+                print "Button pressed"
                 self.buttonDown = True
 
         if not buttonPressed:
             if self.lastEvent.buttonPressed:
                 buttonReleased = True
                 self.buttonDown = False
-                print("Button released")
+                print "Button released"
 
-        rawTR = (int(bytes[0], 16) << 8) + int(bytes[1], 16)
-        rawBR = (int(bytes[2], 16) << 8) + int(bytes[3], 16)
-        rawTL = (int(bytes[4], 16) << 8) + int(bytes[5], 16)
-        rawBL = (int(bytes[6], 16) << 8) + int(bytes[7], 16)
+        rawTR = (int(bytes[0].encode("hex"), 16) << 8) + int(bytes[1].encode("hex"), 16)
+        rawBR = (int(bytes[2].encode("hex"), 16) << 8) + int(bytes[3].encode("hex"), 16)
+        rawTL = (int(bytes[4].encode("hex"), 16) << 8) + int(bytes[5].encode("hex"), 16)
+        rawBL = (int(bytes[6].encode("hex"), 16) << 8) + int(bytes[7].encode("hex"), 16)
 
         topLeft = self.calcMass(rawTL, TOP_LEFT)
         topRight = self.calcMass(rawTR, TOP_RIGHT)
@@ -237,13 +236,13 @@ class Wiiboard:
     def parseCalibrationResponse(self, bytes):
         index = 0
         if len(bytes) == 16:
-            for i in range(2):
-                for j in range(4):
-                    self.calibration[i][j] = (int(bytes[index], 16) << 8) + int(bytes[index + 1], 16)
+            for i in xrange(2):
+                for j in xrange(4):
+                    self.calibration[i][j] = (int(bytes[index].encode("hex"), 16) << 8) + int(bytes[index + 1].encode("hex"), 16)
                     index += 2
         elif len(bytes) < 16:
-            for i in range(4):
-                self.calibration[2][i] = (int(bytes[index], 16) << 8) + int(bytes[index + 1], 16)
+            for i in xrange(4):
+                self.calibration[2][i] = (int(bytes[index].encode("hex"), 16) << 8) + int(bytes[index + 1].encode("hex"), 16)
                 index += 2
 
     # Send <data> to the Wiiboard

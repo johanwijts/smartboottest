@@ -255,7 +255,7 @@ class Wiiboard:
         senddata = ""
         for byte in data:
             byte = str(byte)
-            senddata += byte.decode("hex")
+            senddata += byte
 
         self.controlsocket.send(senddata)
 

@@ -61,9 +61,9 @@ class EventProcessor:
 #             time.sleep(millis / 1000.0)
             
             w.config(text=str(event.topLeft))
+            sleep(5)
 
         root.mainloop()
-        sleep(5)
     
 #             stdout.write("\r%d" % event.topLeft)
 #             stdout.write("\r%d" % event.topRight)

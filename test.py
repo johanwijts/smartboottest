@@ -45,6 +45,13 @@ class EventProcessor:
         self._eventsTR = []
         self._eventsBL = []
         self._eventsBR = []
+        
+        root = tk.Tk()
+
+        w = tk.Label(root, text="Hello Tkinter!")
+        w.pack()
+
+        root.mainloop()
 
     def mass(self, event):
         if event.totalWeight > 20:
@@ -65,9 +72,9 @@ class EventProcessor:
 #             bl = tk.Label(text=event.bottomLeft)
 #             br = tk.Label(text=event.bottomRight)
 
-            root = tk.Tk()            
+#             root = tk.Tk()            
     
-            tl = tk.Label(text="Hello")
+#             tl = tk.Label(text="Hello")
 #             tr = tk.Label(text="Hello2")
 #             bl = tk.Label(text="hello3")
 #             br = tk.Label(text="hello4")
@@ -80,11 +87,10 @@ class EventProcessor:
 #                 sleep(1)
 #             update()
 
-            root.title("Pressure Detector")
-            label = tk.Label(root, fg="green")
-            label.pack()
-            root.mainloop()
-            sleep(2)
+#             root.title("Pressure Detector")
+#             label = tk.Label(root, fg="green")
+#             label.pack()
+#             root.mainloop()
                     
 #             stdout.write("\r%d" % event.bottomRight)
 # #             sleep(0.5)

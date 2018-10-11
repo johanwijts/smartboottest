@@ -45,16 +45,12 @@ class EventProcessor:
         self._eventsTR = []
         self._eventsBL = []
         self._eventsBR = []
-        
+
+    def mass(self, event):
         self.root = tk.Tk()
 
         self.w = tk.Label(root, text="Hello Tkinter!")
         
-#         w.pack()
-
-#         root.mainloop()
-
-    def mass(self, event):
         if event.totalWeight > 20:
             self._events.append(event.totalWeight)
             self._eventsTL.append(event.topLeft)
@@ -66,8 +62,8 @@ class EventProcessor:
             
             self.w.config(text=str(event.topLeft))
 
-            self.root.mainloop()
-            sleep(5)
+        self.root.mainloop()
+        sleep(5)
     
 #             stdout.write("\r%d" % event.topLeft)
 #             stdout.write("\r%d" % event.topRight)

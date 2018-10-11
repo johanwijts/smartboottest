@@ -49,6 +49,7 @@ class EventProcessor:
         root = tk.Tk()
 
         w = tk.Label(root, text="Hello Tkinter!")
+        
         w.pack()
 
         root.mainloop()
@@ -63,6 +64,8 @@ class EventProcessor:
 #             print(event.topLeft, end=" ")
 #             time.sleep(millis / 1000.0)
             
+        w.config(text=str(event.topLeft))
+    
 #             stdout.write("\r%d" % event.topLeft)
 #             stdout.write("\r%d" % event.topRight)
 #             stdout.write("\r%d" % event.bottomLeft)

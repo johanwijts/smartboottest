@@ -2,7 +2,7 @@
 from __future__ import print_function
 from sys import stdout
 from time import sleep
-import tkinter as tk
+import Tkinter as tk
 import collections
 import time
 import bluetooth

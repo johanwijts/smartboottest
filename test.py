@@ -84,6 +84,7 @@ class EventProcessor:
             label = tk.Label(root, fg="green")
             label.pack()
             root.mainloop()
+            sleep(2)
                     
 #             stdout.write("\r%d" % event.bottomRight)
 # #             sleep(0.5)

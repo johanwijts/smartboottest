@@ -64,11 +64,13 @@ class EventProcessor:
 #             tr = tk.Label(text=event.topRight)
 #             bl = tk.Label(text=event.bottomLeft)
 #             br = tk.Label(text=event.bottomRight)
-            
+
+            root = tk.Tk()            
+    
             tl = tk.Label(text="Hello")
-            tr = tk.Label(text="Hello2")
-            bl = tk.Label(text="hello3")
-            br = tk.Label(text="hello4")
+#             tr = tk.Label(text="Hello2")
+#             bl = tk.Label(text="hello3")
+#             br = tk.Label(text="hello4")
             
 #             def update():
 #                 tl.config(text=str(event.topLeft))
@@ -78,7 +80,6 @@ class EventProcessor:
 #                 sleep(1)
 #             update()
 
-            root = tk.Tk()
             root.title("Pressure Detector")
             label = tk.Label(root, fg="green")
             label.pack()

@@ -56,17 +56,18 @@ class EventProcessor:
             self._eventsBL.append(event.bottomLeft)
             self._eventsBR.append(event.bottomRight)
             
-            print(event.topLeft, end=" ")
+#             print(event.topLeft, end=" ")
 #             time.sleep(millis / 1000.0)
             
 # #             w = tk.Label(root, text="Hello Tkinter!")
 #             w = tk.Label(root, text=str(event.topLeft))
 # #             w.config(text=str(event.topLeft))
 #             root.mainloop()
-            sleep(5)
+
 #             root.destroy
     
-#             stdout.write("\r%d" % event.topLeft)
+            stdout.write("\r%d" % event.topLeft)
+            sleep(5)
 #             stdout.write("\r%d" % event.topRight)
 #             stdout.write("\r%d" % event.bottomLeft)
 

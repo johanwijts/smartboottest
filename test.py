@@ -66,8 +66,7 @@ class EventProcessor:
 
 #             root.destroy
     
-            stdout.write("\r%d" % event.topLeft)
-            sleep(5)
+#             stdout.write("\r%d" % event.topLeft)
 #             stdout.write("\r%d" % event.topRight)
 #             stdout.write("\r%d" % event.bottomLeft)
 

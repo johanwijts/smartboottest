@@ -221,6 +221,8 @@ class Wiiboard:
                 self.processor.mass(self.createBoardEvent(data[2:12]))
             else:
                 print ("ACK to data write received")
+                root = Tk()
+                root.mainloop()
 
 #         self.status = "Disconnected"
 #         self.disconnect()
@@ -381,9 +383,6 @@ def main():
     board.wait(500)
     board.setLight(True)
     board.receive()
-
-    root = Tk()
-    root.mainloop()
 
 #     # Disconnect the balance board after exiting.
 #     subprocess.check_output(["bluez-test-device", "disconnect", address])

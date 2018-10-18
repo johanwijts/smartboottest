@@ -57,13 +57,13 @@ class EventProcessor:
             
             if self.doOnce:
                 label.config(text = str(event.topLeft))
-                root.after(1000, mass)
+                root.after(1000, self.mass)
                              
             if not self.doOnce:
                  label = Label(root, text = "topLeft")
                  label.pack()
                  doOnce = True
-                 root.after(1000, mass)
+                 root.after(1000, self.mass)
         
         if self.doOnce:
             root.mainloop()

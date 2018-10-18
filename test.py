@@ -45,11 +45,10 @@ class EventProcessor:
         self._eventsTR = []
         self._eventsBL = []
         self._eventsBR = []
-        
-        root = Tk()
-
+      
     def mass(self, event):
 #         root = tk.Tk()
+        root = Tk()
         
         if event.totalWeight > 20:
             self._events.append(event.totalWeight)

@@ -37,7 +37,6 @@ class EventProcessor:
     root = Tk()
     
     def __init__(self):
-        self.doOnce = False
         self._measured = False
 #         self.done = False
         self._events = []
@@ -48,27 +47,22 @@ class EventProcessor:
       
     def mass(self, event):
         root = Tk()
+                        
+        def initiateLabel():                    
+             label = Label(root, text = "topLeft")
+             label.pack()
+             root.after(1000, updateWeight)
         
         def updateWeight():
-            if self.doOnce:
-                self._events.append(event.totalWeight)
-                self._eventsTL.append(event.topLeft)
-                self._eventsTR.append(event.topRight)
-                self._eventsBL.append(event.bottomLeft)
-                self._eventsBR.append(event.bottomRight)
-                label.config(text = str(event.topLeft))
-                print("updating")
-                root.after(1000, updateWeight)
+            self._events.append(event.totalWeight)
+            self._eventsTL.append(event.topLeft)
+            self._eventsTR.append(event.topRight)
+            self._eventsBL.append(event.bottomLeft)
+            self._eventsBR.append(event.bottomRight)
+            label.config(text = str(event.topLeft))
+            print("updating")
+            root.after(1000, updateWeight)
                 
-        def initiateLabel():                    
-            if not self.doOnce:
-                 label = Label(root, text = "topLeft")
-                 label.pack()
-                 self.doOnce = True
-                 print(self.doOnce)
-                 root.after(1000, updateWeight)
-        
-        print(self.doOnce)
         root.mainloop()
 
     @property

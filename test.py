@@ -56,7 +56,7 @@ class EventProcessor:
             self._eventsBR.append(event.bottomRight)
             
             if doOnce:
-                label.config(text = str(event.topLeft)
+                label.config(text = str(event.topLeft))
                 root.after(1000, mass)
                              
             if not doOnce:

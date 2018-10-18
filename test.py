@@ -63,6 +63,7 @@ class EventProcessor:
             print("updating")
             root.after(1000, updateWeight)
                 
+        initiateLabel()        
         root.mainloop()
 
     @property

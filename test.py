@@ -57,6 +57,7 @@ class EventProcessor:
                 self._eventsBL.append(event.bottomLeft)
                 self._eventsBR.append(event.bottomRight)
                 label.config(text = str(event.topLeft))
+                print("updating")
                 root.after(1000, updateWeight)
                 
         def initiateLabel():                    
@@ -64,6 +65,7 @@ class EventProcessor:
                  label = Label(root, text = "topLeft")
                  label.pack()
                  self.doOnce = True
+                 print(self.doOnce)
                  root.after(1000, updateWeight)
         
         print(self.doOnce)

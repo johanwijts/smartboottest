@@ -55,17 +55,17 @@ class EventProcessor:
             self._eventsBL.append(event.bottomLeft)
             self._eventsBR.append(event.bottomRight)
             
-            if doOnce:
+            if self.doOnce:
                 label.config(text = str(event.topLeft))
                 root.after(1000, mass)
                              
-            if not doOnce:
+            if not self.doOnce:
                  label = Label(root, text = "topLeft")
                  label.pack()
                  doOnce = True
                  root.after(1000, mass)
         
-        if not doOnce:
+        if self.doOnce:
             root.mainloop()
 
     @property

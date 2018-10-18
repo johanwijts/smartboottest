@@ -46,7 +46,7 @@ class EventProcessor:
         self._eventsBL = []
         self._eventsBR = []
         
-        root = tk.Tk()
+        root = Tk()
 
     def mass(self, event):
 #         root = tk.Tk()

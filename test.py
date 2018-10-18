@@ -57,7 +57,7 @@ class EventProcessor:
             self._eventsBR.append(event.bottomRight)
             
             print(event.topLeft, end=" ")
-            time.sleep(millis / 1000.0)
+            sleep(1000)
             
 # #             w = tk.Label(root, text="Hello Tkinter!")
 #             w = tk.Label(root, text=str(event.topLeft))

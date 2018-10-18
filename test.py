@@ -2,7 +2,7 @@
 from __future__ import print_function
 from sys import stdout
 from time import sleep
-import Tkinter as tk
+from tkinter import *
 import collections
 import time
 import bluetooth
@@ -45,6 +45,7 @@ class EventProcessor:
         self._eventsTR = []
         self._eventsBL = []
         self._eventsBR = []
+        root = Tk()
       
     def mass(self, event):       
         if event.totalWeight > 20:
@@ -104,7 +105,6 @@ class EventProcessor:
 #             sleep(1)
 #             print("Me sleepy")
 
-    root = tk()
     root.mainloop()
 
     @property

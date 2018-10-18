@@ -45,7 +45,6 @@ class EventProcessor:
         self._eventsTR = []
         self._eventsBL = []
         self._eventsBR = []
-        root = tk()
       
     def mass(self, event):       
         if event.totalWeight > 20:
@@ -105,6 +104,7 @@ class EventProcessor:
 #             sleep(1)
 #             print("Me sleepy")
 
+    root = tk()
     root.mainloop()
 
     @property

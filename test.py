@@ -54,11 +54,11 @@ class EventProcessor:
              root.after(1000, updateWeight)
         
         def updateWeight():
-            self._events.append(event.totalWeight)
+#             self._events.append(event.totalWeight)
             self._eventsTL.append(event.topLeft)
-            self._eventsTR.append(event.topRight)
-            self._eventsBL.append(event.bottomLeft)
-            self._eventsBR.append(event.bottomRight)
+#             self._eventsTR.append(event.topRight)
+#             self._eventsBL.append(event.bottomLeft)
+#             self._eventsBR.append(event.bottomRight)
             label.config(text = str(event.topLeft))
             print(event.topLeft)
             root.after(1000, updateWeight)

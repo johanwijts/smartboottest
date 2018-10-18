@@ -63,7 +63,7 @@ class EventProcessor:
             if not self.doOnce:
                  label = Label(root, text = "topLeft")
                  label.pack()
-                 doOnce = True
+                 self.doOnce = True
                  root.after(1000, updateWeight)
         
         print(self.doOnce)

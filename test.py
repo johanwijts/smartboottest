@@ -108,7 +108,7 @@ class EventProcessor:
 #             sleep(1)
 #             print("Me sleepy")
 
-root.mainloop()
+    root.mainloop()
 
     @property
     def weight(self):

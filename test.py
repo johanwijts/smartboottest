@@ -103,8 +103,6 @@ class EventProcessor:
 #             stdout.flush()
 #             sleep(1)
 #             print("Me sleepy")
-    root = Tk()
-    root.mainloop()
 
     @property
     def weight(self):
@@ -384,7 +382,8 @@ def main():
     board.setLight(True)
     board.receive()
 
-    print (processor.weight)
+    root = Tk()
+    root.mainloop()
 
 #     # Disconnect the balance board after exiting.
 #     subprocess.check_output(["bluez-test-device", "disconnect", address])

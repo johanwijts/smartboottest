@@ -33,20 +33,21 @@ BOTTOM_LEFT = 3
 
 BLUETOOTH_NAME = "Nintendo RVL-WBC-01"
 
-
 class EventProcessor:
+    root = Tk()
+    
     def __init__(self):
+        self.doOnce = False
         self._measured = False
 #         self.done = False
         self._events = []
-# #     remove if not working 
-#         self._eventsT = []
         self._eventsTL = []
         self._eventsTR = []
         self._eventsBL = []
         self._eventsBR = []
       
-    def mass(self, event):       
+    def mass(self, event):
+        root = Tk()
         if event.totalWeight > 20:
             self._events.append(event.totalWeight)
             self._eventsTL.append(event.topLeft)
@@ -54,55 +55,17 @@ class EventProcessor:
             self._eventsBL.append(event.bottomLeft)
             self._eventsBR.append(event.bottomRight)
             
-            label = Label(root,text=str(event.topLeft)) #set your text
-            label.pack()
-#             labels.append(label) #appends the label to the list for further use
-            root.after(1000, mass)
+            if doOnce:
+                label.config(text = str(event.topLeft)
+                root.after(1000, mass)
+                             
+            if not doOnce:
+                 label = Label(root, text = "topLeft")
+                 label.pack()
+                 doOnce = True
+                 root.after(1000, mass)
             
-# #             w = tk.Label(root, text="Hello Tkinter!")
-#             w = tk.Label(root, text=str(event.topLeft))
-# #             w.config(text=str(event.topLeft))
-#             root.mainloop()
-
-#             root.destroy
-    
-#             stdout.write("\r%d" % event.topLeft)
-#             stdout.write("\r%d" % event.topRight)
-#             stdout.write("\r%d" % event.bottomLeft)
-
-#             tl = tk.Label(text=event.topLeft)
-#             tr = tk.Label(text=event.topRight)
-#             bl = tk.Label(text=event.bottomLeft)
-#             br = tk.Label(text=event.bottomRight)
-
-#             root = tk.Tk()            
-    
-#             tl = tk.Label(text="Hello")
-#             tr = tk.Label(text="Hello2")
-#             bl = tk.Label(text="hello3")
-#             br = tk.Label(text="hello4")
-            
-#             def update():
-#                 tl.config(text=str(event.topLeft))
-#                 tr.config(text=str(event.topRight))
-#                 bl.config(text=str(event.bottomLeft))
-#                 br.config(text=str(event.bottomRight))
-#                 sleep(1)
-#             update()
-
-#             root.title("Pressure Detector")
-#             label = tk.Label(root, fg="green")
-#             label.pack()
-#             root.mainloop()
-                    
-#             stdout.write("\r%d" % event.bottomRight)
-# #             sleep(0.5)
-#             stdout.flush()
-            
-#             sys.stdout.write("\r%s" % "{}-{}-{}-{}".format(*self._eventsT))
-#             stdout.flush()
-#             sleep(1)
-#             print("Me sleepy")
+        root.mainLoop()
 
     @property
     def weight(self):
@@ -221,8 +184,6 @@ class Wiiboard:
                 self.processor.mass(self.createBoardEvent(data[2:12]))
             else:
                 print ("ACK to data write received")
-                root = Tk()
-                root.mainloop()
 
 #         self.status = "Disconnected"
 #         self.disconnect()

@@ -64,8 +64,9 @@ class EventProcessor:
                  label.pack()
                  doOnce = True
                  root.after(1000, mass)
-            
-        root.mainloop()
+        
+        if not doOnce:
+            root.mainloop()
 
     @property
     def weight(self):

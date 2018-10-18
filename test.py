@@ -60,7 +60,7 @@ class EventProcessor:
             self._eventsBL.append(event.bottomLeft)
             self._eventsBR.append(event.bottomRight)
             label.config(text = str(event.topLeft))
-            print("updating")
+            print(event.topLeft)
             root.after(1000, updateWeight)
                 
         initiateLabel()        

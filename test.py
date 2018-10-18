@@ -9,8 +9,6 @@ import bluetooth
 import sys
 import subprocess
 
-root = tk()
-
 CONTINUOUS_REPORTING = "04"  # Easier as string with leading zero
 
 COMMAND_LIGHT = 11
@@ -47,6 +45,7 @@ class EventProcessor:
         self._eventsTR = []
         self._eventsBL = []
         self._eventsBR = []
+        root = tk()
       
     def mass(self, event):       
         if event.totalWeight > 20:

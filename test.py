@@ -64,7 +64,7 @@ class EventProcessor:
                  label = Label(root, text = "topLeft")
                  label.pack()
                  doOnce = True
-                 root.after(1000, supdateWeight)
+                 root.after(1000, updateWeight)
         
         root.mainloop()
 

@@ -45,6 +45,8 @@ class EventProcessor:
         self._eventsTR = []
         self._eventsBL = []
         self._eventsBR = []
+        
+        root = tk.Tk()
 
     def mass(self, event):
 #         root = tk.Tk()
@@ -56,7 +58,10 @@ class EventProcessor:
             self._eventsBL.append(event.bottomLeft)
             self._eventsBR.append(event.bottomRight)
             
-            print(event.topLeft)
+            label = Label(root,text=str(event.topLeft)) #set your text
+            label.pack()
+#             labels.append(label) #appends the label to the list for further use
+            root.after(1000, mass)
             
 # #             w = tk.Label(root, text="Hello Tkinter!")
 #             w = tk.Label(root, text=str(event.topLeft))
@@ -102,6 +107,8 @@ class EventProcessor:
 #             stdout.flush()
 #             sleep(1)
 #             print("Me sleepy")
+
+root.mainloop()
 
     @property
     def weight(self):

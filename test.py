@@ -47,9 +47,9 @@ class EventProcessor:
       
     def mass(self, event):
         root = Tk()
+        label = Label(root, text = "topLeft")
                         
         def initiateLabel():                    
-             label = Label(root, text = "topLeft")
              label.pack()
              root.after(1000, updateWeight)
         

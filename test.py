@@ -59,7 +59,11 @@ class EventProcessor:
 #             self._eventsTR.append(event.topRight)
 #             self._eventsBL.append(event.bottomLeft)
 #             self._eventsBR.append(event.bottomRight)
-            label.config(text = str(event.topLeft))
+
+            histogram = collections.Counter(round(num, 1) for num in self._eventsTL)
+
+            label.config(text = str(histogram.most_common(1)[0][0]))
+        
             print(event.topLeft)
             root.after(1000, updateWeight)
                 

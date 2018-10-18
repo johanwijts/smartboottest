@@ -48,22 +48,23 @@ class EventProcessor:
       
     def mass(self, event):
         root = Tk()
-        if event.totalWeight > 20:
-            self._events.append(event.totalWeight)
-            self._eventsTL.append(event.topLeft)
-            self._eventsTR.append(event.topRight)
-            self._eventsBL.append(event.bottomLeft)
-            self._eventsBR.append(event.bottomRight)
-            
+        
+        def updateWeight():
             if self.doOnce:
+                self._events.append(event.totalWeight)
+                self._eventsTL.append(event.topLeft)
+                self._eventsTR.append(event.topRight)
+                self._eventsBL.append(event.bottomLeft)
+                self._eventsBR.append(event.bottomRight)
                 label.config(text = str(event.topLeft))
-                root.after(1000, self.mass)
-                             
+                root.after(1000, updateWeight)
+                
+        def initiateLabel():                    
             if not self.doOnce:
                  label = Label(root, text = "topLeft")
                  label.pack()
                  doOnce = True
-                 root.after(1000, self.mass)
+                 root.after(1000, supdateWeight)
         
         root.mainloop()
 

@@ -9,7 +9,7 @@ import bluetooth
 import sys
 import subprocess
 
-root = Tk()
+root = tk()
 
 CONTINUOUS_REPORTING = "04"  # Easier as string with leading zero
 

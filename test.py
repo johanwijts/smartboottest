@@ -65,7 +65,7 @@ class EventProcessor:
                  doOnce = True
                  root.after(1000, mass)
             
-        root.mainLoop()
+        root.mainloop()
 
     @property
     def weight(self):
